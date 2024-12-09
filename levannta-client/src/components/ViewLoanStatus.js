@@ -9,7 +9,6 @@ const ViewLoanStatus = () => {
     const fetchLoans = async () => {
       try {
         const data = await ApiProvider.get("/loan-status");
-        console.log("data", data);
         setLoans(data);
       } catch (error) {
         console.error("Error fetching loan status:", error);

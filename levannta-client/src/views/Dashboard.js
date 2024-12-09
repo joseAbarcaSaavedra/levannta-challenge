@@ -15,20 +15,27 @@ const Dashboard = () => {
     setOpenModal(true);
   };
 
-  useEffect(() => {
-    const fetchSubscribers = async () => {
-      try {
-        const data = await ApiProvider.get(
-          `/company/${COMPANY_ID}/subscriptions`
-        );
-        setSubscribers(data);
-      } catch (error) {
-        console.error("Error fetching subscribers:", error);
-      }
-    };
+  const fetchSubscribers = async () => {
+    try {
+      const data = await ApiProvider.get(
+        `/company/${COMPANY_ID}/subscriptions`
+      );
+      setSubscribers(data);
+    } catch (error) {
+      console.error("Error fetching subscribers:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchSubscribers();
   }, []);
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    if (selectedOption === "upload") {
+      fetchSubscribers();
+    }
+  };
 
   return (
     <Box sx={{ padding: "20px" }}>
@@ -65,7 +72,7 @@ const Dashboard = () => {
           </Button>
           <DynamicModal
             open={openModal}
-            onClose={() => setOpenModal(false)}
+            onClose={handleCloseModal}
             selectedOption={selectedOption}
           />
         </Box>
