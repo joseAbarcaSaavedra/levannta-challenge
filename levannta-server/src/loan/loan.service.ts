@@ -1,6 +1,5 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { CreateLoanDto } from './dto/create-loan.dto';
-import { UpdateLoanDto } from './dto/update-loan.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Loan } from './entities/loan.entity';
 import { WhereOptions } from 'sequelize';

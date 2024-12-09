@@ -1,9 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
+import { WhereOptions } from 'sequelize';
+
 import { CreateCompanySubscriptionDto } from './dto/create-company-subscription.dto';
 import { UpdateCompanySubscriptionDto } from './dto/update-company-subscription.dto';
-import { InjectModel } from '@nestjs/sequelize';
 import { CompanySubscription } from './entities/company-subscription.entity';
-import { WhereOptions } from 'sequelize';
+
 @Injectable()
 export class CompanySubscriptionsService {
   constructor(

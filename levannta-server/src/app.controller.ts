@@ -7,16 +7,15 @@ import {
   Body,
   BadRequestException,
 } from '@nestjs/common';
-import { AppService } from './services/app.service';
 import { FileService } from './_core/services/file.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+
 import { CompanyService } from './company/company.service';
 import { LoanService } from './loan/loan.service';
 
 @Controller()
 export class AppController {
   constructor(
-    private readonly appService: AppService,
     private readonly fileService: FileService,
     private readonly companyService: CompanyService,
     private readonly loanService: LoanService,
@@ -69,7 +68,6 @@ export class AppController {
       const INSTALLMENTS = 6; // Default number of installments
 
       const { amount } = body;
-      console.log('body', body);
 
       // Use current month and previous month to evaluate the loan
       const CURRENT_MONTH = new Date().getMonth() + 1;
@@ -114,9 +112,7 @@ export class AppController {
       // Get loan status
       const loans = await this.loanService.activeLoans(COMPANY_ID);
 
-      return loans.length > 0
-        ? { status: 'active', loans }
-        : { status: 'inactive' };
+      return { status: loans.length > 0 ? 'active' : 'inactive', loans };
     } catch (error) {
       // TODO: Log error
       throw new BadRequestException(error);
