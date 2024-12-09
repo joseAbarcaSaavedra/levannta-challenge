@@ -40,10 +40,10 @@ const RequestLoanForm = () => {
     <Box>
       {!responseMessage && (
         <Box>
-          <Typography variant="h6">Request Loan</Typography>
+          <Typography variant="h6">Solicitar crédito</Typography>
           <TextField
             type="number"
-            label="Amount"
+            label="Monto"
             fullWidth
             value={amount}
             onChange={(e) => setAmount(e.target.value)}

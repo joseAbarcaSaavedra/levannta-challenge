@@ -22,7 +22,7 @@ const ViewLoanStatus = () => {
 
   return (
     <Box>
-      <Typography variant="h6">Loan Status</Typography>
+      <Typography variant="h6">Estado de crédito</Typography>
       {loans ? (
         <Box>
           <StatusTable data={loans} />

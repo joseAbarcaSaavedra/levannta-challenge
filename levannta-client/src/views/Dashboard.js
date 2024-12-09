@@ -21,7 +21,6 @@ const Dashboard = () => {
         const data = await ApiProvider.get(
           `/company/${COMPANY_ID}/subscriptions`
         );
-        console.log("data", data);
         setSubscribers(data);
       } catch (error) {
         console.error("Error fetching subscribers:", error);
@@ -48,21 +47,21 @@ const Dashboard = () => {
             color="primary"
             onClick={() => handleOpenModal("upload")}
           >
-            Upload Subscribers
+            Actualizar suscriptores
           </Button>
           <Button
             variant="contained"
             color="secondary"
             onClick={() => handleOpenModal("viewStatus")}
           >
-            View Loan Status
+            Ver estado de crédito
           </Button>
           <Button
             variant="contained"
             color="success"
             onClick={() => handleOpenModal("requestLoan")}
           >
-            Request Loan
+            Solicitar crédito
           </Button>
           <DynamicModal
             open={openModal}

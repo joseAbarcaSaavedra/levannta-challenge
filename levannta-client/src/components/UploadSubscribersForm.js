@@ -28,7 +28,6 @@ const UploadSubscribersForm = () => {
           "Content-Type": "multipart/form-data"
         }
       });
-      console.log("response", response);
       setMaxCreditAmount(response.maxLoanAmount);
       setErrorMessage(null); // Limpiar errores si la solicitud es exitosa
     } catch (error) {
@@ -49,7 +48,7 @@ const UploadSubscribersForm = () => {
     <Box>
       {!maxCreditAmount && (
         <Box>
-          <Typography variant="h6">Upload Subscribers</Typography>
+          <Typography variant="h6">Actualizar suscriptores</Typography>
           <TextField
             type="file"
             fullWidth
