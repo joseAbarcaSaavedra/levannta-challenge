@@ -15,4 +15,10 @@ export class CompanyController {
   findOne(@Param('id') id: string) {
     return this.companyService.findOne(+id);
   }
+
+  @Get(':id/subscriptions')
+  subscriptions(@Param('id') id: string) {
+    // TODO: add auth guard to check if the user has access to the company
+    return this.companyService.getSubscriptions({ companyId: id });
+  }
 }
